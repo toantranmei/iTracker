@@ -1,18 +1,18 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <h1>Something here...</h1>
+  <button @click="onHandle">Click</button>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import { ipcRenderer } from "electron";
 export default {
-  name: "Home",
-  components: {
-    HelloWorld,
+  setup() {
+    function onHandle() {
+      console.log("run here...");
+      ipcRenderer.send("something", { foo: "bar" });
+    }
+
+    return { onHandle };
   },
 };
 </script>
